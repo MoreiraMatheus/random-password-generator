@@ -1,6 +1,7 @@
 const bt_create_random_password = document.querySelector('button')
 const password_panel = document.getElementById('created-password')
 
+const lengthPassword = document.getElementById('iLength')
 const checkboxLetters = document.getElementById('iLetter')
 const checkboxCapitalLetters = document.getElementById('iCapitalLetters')
 const checkboxNumbers = document.getElementById('iNumbers')
@@ -12,21 +13,28 @@ let passwordRules = {
     'numbers': false,
     'specialCaracteres': false}
 
-const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k','l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
-const specialCaracteres = ['!', '/', '@', '#', '$', '%', '&', '*']
+const letters = 'abcdefghijlmnopqrstuvwxyz'
+const numbers = '01234567890'
+const specialCaracteres = '!@#$%&*'
 
-function ischecked(parameter){
-    updatePasswordRules(parameter)
+bt_create_random_password.addEventListener('click', generatePassword)
+
+function generatePassword(){
+    let newPassword = ''
+    let comprimento = Number(lengthPassword.value)
+    const possibleCaracteres = possibleCaracteresToUse()
+    for(let i = 0; i < comprimento; i++){ 
+        newPassword += possibleCaracteres[randomIntGenerator(0, possibleCaracteres.length - 1)]
+    }
+    password_panel.innerText = newPassword
 }
 
-function updatePasswordRules(rule){
+function ischecked(rule){
     if(rule === 'letters'){
         passwordRules.letters = !passwordRules.letters
     }
     else if(rule === 'captitalizeLetters'){
         passwordRules.captitalizeLetters = !passwordRules.captitalizeLetters
-
     }
     else if(rule === 'numbers'){
         passwordRules.numbers = !passwordRules.numbers
@@ -36,8 +44,23 @@ function updatePasswordRules(rule){
     }
 }
 
-function generatePassword(){
-    console.log(passwordRules)
+function possibleCaracteresToUse(){
+    let caracteres = '';
+    if(passwordRules.letters == true){
+        caracteres += letters
+    }
+    if(passwordRules.captitalizeLetters == true){
+        caracteres += letters.toLocaleUpperCase()
+    }
+    if(passwordRules.numbers == true){
+        caracteres += numbers
+    }
+    if(passwordRules.specialCaracteres == true){
+        caracteres += specialCaracteres
+    }
+    return caracteres
 }
 
-bt_create_random_password.addEventListener('click', generatePassword)
+function randomIntGenerator(min, max){
+    return Math.floor(Math.random() * (max - min + 1)) + min
+}
