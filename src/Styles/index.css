@@ -1,9 +1,8 @@
 :root{
-    --cor1: #f2dd6e;
-    --cor2: #712f79;
-    --cor3: #ccc;
-    --cor4: black;
-    --cor5: #cff27e;
+    --cor1: #495A79;
+    --cor2: #5AF1FF;
+    --cor3: #D9E1F2;
+    --cor4: #949FB3;
 }
 
 *{
@@ -21,7 +20,7 @@ body{
     width: 100vw;
 }
 
-body, main{
+body, main, #response, .icon-button, #buttons{
     display: flex;
     align-items: center;
 }
@@ -30,26 +29,55 @@ main{
     flex-direction: column;
     justify-content: space-around;
     background-color: var(--cor1);
+    border-radius: 10px;
     width: 300px;
-    height: 270px;
+    height: 300px;
 }
 
-#created-password{
+#response{
     background-color: var(--cor3);
     width: 85%;
     height: 50px;
-    color: var(--cor4);
     border-radius: 10px;
     text-align: center;
-    padding: 15px;
+    padding: 8px;
+}
+
+
+#created-password{
+    overflow-y: hidden;
+    width: 75%;
+    padding-bottom: 3px;
+}
+#created-password::-webkit-scrollbar{
+    background-color: #495A79;
+    border-radius: 10px;
+    height: 5px;
+}
+#created-password::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background-color: #ccc;
+}
+
+.icon-button{
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+}
+
+#buttons{
+    width: 25%;
 }
 
 #checkboxes{
     width: 85%;
     padding: 5px;
-    color: var(--cor4);
-    border-top: 1px solid var(--cor4);
-    border-bottom: 1px solid var(--cor4);
+    border: 1px solid var(--cor4);
+}
+
+#iLength{
+    outline: none;
+    width: 20%;
 }
 
 button{

@@ -1,4 +1,4 @@
-const bt_create_random_password = document.querySelector('button')
+const bt_create_random_password = document.getElementById('create-random-password')
 const password_panel = document.getElementById('created-password')
 
 const lengthPassword = document.getElementById('iLength')
@@ -20,13 +20,15 @@ const specialCaracteres = '!@#$%&*'
 bt_create_random_password.addEventListener('click', generatePassword)
 
 function generatePassword(){
-    let newPassword = ''
-    let comprimento = Number(lengthPassword.value)
-    const possibleCaracteres = possibleCaracteresToUse()
-    for(let i = 0; i < comprimento; i++){ 
-        newPassword += possibleCaracteres[randomIntGenerator(0, possibleCaracteres.length - 1)]
+    if(ableToGeneratePassword()){
+        let newPassword = ''
+        let passwordLength = Number(lengthPassword.value)
+        const possibleCaracteres = possibleCaracteresToUse()
+        for(let i = 0; i < passwordLength; i++){ 
+            newPassword += possibleCaracteres[randomIntGenerator(0, possibleCaracteres.length - 1)]
+        }
+        password_panel.innerText = newPassword
     }
-    password_panel.innerText = newPassword
 }
 
 function ischecked(rule){
@@ -63,4 +65,21 @@ function possibleCaracteresToUse(){
 
 function randomIntGenerator(min, max){
     return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+function ableToGeneratePassword(){
+    let isValid = false
+    if(40 >= Number(lengthPassword.value) <= 0){
+        window.alert('selecione um tamanho válido!')
+    }
+    else if(passwordRules.letters == false &&
+        passwordRules.captitalizeLetters == false &&
+        passwordRules.numbers == false &&
+        passwordRules.specialCaracteres == false){
+        window.alert('selecione ao menos 1 checkbox')
+    }
+    else{
+        isValid = true
+    }
+    return isValid
 }

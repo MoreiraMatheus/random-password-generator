@@ -9,12 +9,25 @@
 </head>
 <body>
     <main>
-        <div id="created-password">
-            <span></span>
+        <div id="response">
+            <span id="created-password"></span>
+            <div id="buttons">
+                <button id="save-password" class="icon-button">
+                    <abbr title="Salvar senha">
+                        <img src="../img/save.png" alt="save">
+                    </abbr>
+                </button>
+                <button class="icon-button">
+                    <abbr title="Senhas Salvas">
+                        <img src="../img/bookmark.png" alt="bookmark">
+                    </abbr>
+                </button>
+            </div>
         </div>
         
         <div id="checkboxes">
-            <input type="number" name="length" id="iLength" placeholder="tamanho">
+            <label for="iLength">tamanho da senha:</label>
+            <input type="number" name="length" id="iLength">
             <br>
 
             <input type="checkbox" name="letters" id="iLetters" onclick="ischecked('letters')">
@@ -34,7 +47,7 @@
             <br>
         </div>
 
-        <button>Gerar senha</button>
+        <button id="create-random-password">Gerar senha</button>
     </main>
     <script src="../JS/index.js"></script>
 </body>
