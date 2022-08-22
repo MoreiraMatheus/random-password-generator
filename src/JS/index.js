@@ -1,4 +1,5 @@
 const bt_create_random_password = document.getElementById('create-random-password')
+const bt_save_password = document.getElementById('save-password')
 const password_panel = document.getElementById('created-password')
 
 const lengthPassword = document.getElementById('iLength')
@@ -7,6 +8,7 @@ const checkboxCapitalLetters = document.getElementById('iCapitalLetters')
 const checkboxNumbers = document.getElementById('iNumbers')
 const checkboxSpecialCarateres = document.getElementById('iSpecialCaracteres')
 
+let newPassword = ''
 let passwordRules = {
     'letters': false,
     'captitalizeLetters': false,
@@ -18,10 +20,11 @@ const numbers = '01234567890'
 const specialCaracteres = '!@#$%&*'
 
 bt_create_random_password.addEventListener('click', generatePassword)
+bt_save_password.addEventListener('click', savePassword)
 
 function generatePassword(){
     if(ableToGeneratePassword()){
-        let newPassword = ''
+        newPassword = ''
         let passwordLength = Number(lengthPassword.value)
         const possibleCaracteres = possibleCaracteresToUse()
         for(let i = 0; i < passwordLength; i++){ 
@@ -82,4 +85,11 @@ function ableToGeneratePassword(){
         isValid = true
     }
     return isValid
+}
+
+function savePassword(){
+    if(newPassword != ''){
+        localStorage.setItem(`senha${localStorage.length + 1}`, newPassword)
+    }
+    window.alert(localStorage.length)
 }
