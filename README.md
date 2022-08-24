@@ -1,8 +1,6 @@
 # random-password-generator
  Gerador de senhas aleatório utilizando HTML, CSS e JS
-
-
-## afazeres
-* adicionar a opção de escolher o tamanho da senha
-* adicionar a opção de salvar senha no localstorage
-* adicionar página que mostra as senhas salvas
+ 
+ clique [aqui](https://moreiramatheus.github.io/random-password-generator/src/pages/) para ver o projeto na web
+ 
+ projeto que cria senhas aleatórias usando JavaScript
