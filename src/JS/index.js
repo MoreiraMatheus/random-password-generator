@@ -3,10 +3,6 @@ const bt_save_password = document.getElementById('save-password')
 const password_panel = document.getElementById('created-password')
 
 const lengthPassword = document.getElementById('iLength')
-const checkboxLetters = document.getElementById('iLetter')
-const checkboxCapitalLetters = document.getElementById('iCapitalLetters')
-const checkboxNumbers = document.getElementById('iNumbers')
-const checkboxSpecialCarateres = document.getElementById('iSpecialCaracteres')
 
 let newPassword = ''
 let passwordRules = {
@@ -14,6 +10,7 @@ let passwordRules = {
     'captitalizeLetters': false,
     'numbers': false,
     'specialCaracteres': false}
+
 
 const letters = 'abcdefghijlmnopqrstuvwxyz'
 const numbers = '01234567890'
@@ -75,10 +72,12 @@ function ableToGeneratePassword(){
     if(40 >= Number(lengthPassword.value) <= 0){
         window.alert('selecione um tamanho válido!')
     }
-    else if(passwordRules.letters == false &&
+    else if(
+        passwordRules.letters == false &&
         passwordRules.captitalizeLetters == false &&
         passwordRules.numbers == false &&
-        passwordRules.specialCaracteres == false){
+        passwordRules.specialCaracteres == false
+        ){
         window.alert('selecione ao menos 1 checkbox')
     }
     else{
@@ -100,4 +99,11 @@ function savePassword(){
     if(newPassword != ''){
         localStorage.setItem(`senha${localStorage.length + 1}`, newPassword)
     }
+}
+
+function resetCheckboxes(){
+    document.getElementById('iLetters').checked = false
+    document.getElementById('iCapitalLetters').checked = false
+    document.getElementById('iNumbers').checked = false
+    document.getElementById('iSpecialCaracteres').checked = false
 }

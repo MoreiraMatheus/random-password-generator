@@ -11,6 +11,6 @@ for(let i = 0; i < localStorage.length; i++){
 }
 
 function deletePassword(key){
-    // window.alert(key)
     localStorage.removeItem(key)
+    location.reload()
 }
