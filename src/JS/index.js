@@ -87,15 +87,6 @@ function ableToGeneratePassword(){
 }
 
 function savePassword(){
-    // let keyName = ''
-    if(`senha${localStorage.length + 1}` in localStorage){
-        alert('key já existe')
-        // keyName = `senha${localStorage.length + 2}` 
-    }
-    else{
-        alert('key não existe')
-        // keyName = `senha${localStorage.length + 1}`
-    }
     if(newPassword != ''){
         localStorage.setItem(`senha${localStorage.length + 1}`, newPassword)
     }
